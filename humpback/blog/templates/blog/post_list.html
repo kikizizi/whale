@@ -1,16 +1,25 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>post_list</title>
 </head>
+
 <body>
-{%for p in post_list%}
-<hr>
-<a href="{{p.get_absulute_url}}">detail</a>    
-<p>{{p.title}}</p>
-{%endfor%}
+    {%if post_list%}
+    {%for p in post_list%}
+    <hr>
+    <a href="{{p.get_absulute_url}}">detail</a>
+    <p>{{p.title}}</p>
+    <p>{{p.content | truncatewords:30}}</p>
+    <!--truncatewords 일정글자수만 출력-->
+    {%endfor%}
+    {%else%}
+    <p>no data</p>
+    {%endif%}
 </body>
+
 </html>
